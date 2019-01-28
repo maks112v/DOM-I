@@ -40,3 +40,35 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+let nav = document.querySelectorAll('nav a');
+nav.forEach((el,i) => el.textContent = siteContent["nav"][`nav-item-${i+1}`]);
+
+document.querySelector(".cta-text h1").textContent = siteContent.cta.h1;
+document.querySelector(".cta-text button").textContent = siteContent.cta.button;
+document.querySelector(".cta img").src = siteContent["cta"]["img-src"];
+
+let topContent = document.querySelectorAll(".top-content .text-content")
+topContent[0].querySelector('h4').textContent = siteContent["main-content"]["features-h4"];
+topContent[0].querySelector('p').textContent = siteContent["main-content"]["features-content"];
+topContent[1].querySelector('h4').textContent = siteContent["main-content"]["about-h4"];
+topContent[1].querySelector('p').textContent = siteContent["main-content"]["about-content"];
+
+document.getElementById('middle-img').src = siteContent["main-content"]["middle-img-src"];
+
+let bottomContent = document.querySelectorAll(".bottom-content .text-content")
+bottomContent[0].querySelector('h4').textContent = siteContent["main-content"]["services-h4"];
+bottomContent[0].querySelector('p').textContent = siteContent["main-content"]["services-content"];
+bottomContent[1].querySelector('h4').textContent = siteContent["main-content"]["product-h4"];
+bottomContent[1].querySelector('p').textContent = siteContent["main-content"]["product-content"];
+bottomContent[2].querySelector('h4').textContent = siteContent["main-content"]["vision-h4"];
+bottomContent[2].querySelector('p').textContent = siteContent["main-content"]["vision-content"];
+
+let contact = document.querySelectorAll(".contact p")
+
+document.querySelector(".contact h4").textContent = siteContent.contact["contact-h4"];
+contact[0].textContent = siteContent["contact"]["address"];
+contact[1].textContent = siteContent["contact"]["phone"];
+contact[2].textContent = siteContent["contact"]["email"];
+
+document.querySelector('footer p').textContent = siteContent.footer.copyright;
