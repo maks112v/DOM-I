@@ -1,49 +1,41 @@
-// class Timer{
-//   constructor(atr){
-//     this.start = atr.start * 1000;
-//     this.end = atr.end * 1000;
-//     this.current = atr.start;
-//     this.countSpeed = atr.countSpeed;
-//   }
+let time = null;
 
-//   countup(){
-//     console.log(this.current);
-//     console.log(this.end);
-//     if(this.end > this.current){
-//       this.current = this.current + this.countSpeed;
-//     }
-//     else{
-//       clearInterval(counter)
-//     }
-//     console.log(this.current);
-//     //this.updateDom(this.current);
-//   }
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return (n.length >= width ? n : new Array(width - n.length + 1).join(z) + n);
+}
 
-//   startCount(){
-//     this.interval;
-//   }
+let counter = null;
 
-//   updateDom(){
-
-//   }
-// }
-
-// const time = new Timer({
-//   start: 0, // In Seconds
-//   end: 10, // In Seconds
-//   updateTime: 10, // In Milliseconds
-//   countSpeed: 10, // In Milliseconds
-// });
-// console.log(time);
-
-// time.countup();
-
-// // const countup = () => {
-// //   console.log("yes");
-// // }
-const stopTime = 10000;
-const counter = setInterval(countup(), 1);
+function start(){
+  time = 0;
+  document.getElementById('button').disabled = true;
+  counter = setInterval(countup, 10);
+}
 
 const countup = () => {
-  
+  time = time + 10;
+  printTime = pad(time, 5);
+  document.getElementById('secondTens').textContent = printTime[0];
+  document.getElementById('secondOnes').textContent = printTime[1];
+  document.getElementById('msHundreds').textContent = printTime[2];
+  document.getElementById('msTens').textContent = printTime[3];
+  if(time === 10000){
+    clearInterval(counter);
+    document.querySelectorAll('.digit').forEach(el => el.style.color = "red");
+    document.getElementById('button').disabled = false;
+    time = 0;
+  }
+}
+
+
+const reset = () => {
+  clearInterval(counter);
+  document.getElementById('button').disabled = false;
+  document.getElementById('secondTens').textContent = "-";
+  document.getElementById('secondOnes').textContent = "-";
+  document.getElementById('msHundreds').textContent = "-";
+  document.getElementById('msTens').textContent = "-";
+  document.querySelectorAll('.digit').forEach(el => el.style.color = "black");
 }
