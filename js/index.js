@@ -72,3 +72,13 @@ contact[1].textContent = siteContent["contact"]["phone"];
 contact[2].textContent = siteContent["contact"]["email"];
 
 document.querySelector('footer p').textContent = siteContent.footer.copyright;
+
+const beforeNav = document.createElement('a');
+beforeNav.textContent = 'Home';
+document.querySelector('nav').prepend(beforeNav);
+const afterNav = document.createElement('a');
+afterNav.textContent = 'Here';
+document.querySelector('nav').append(afterNav);
+//document.querySelector('nav').prepend(document.createElement('a').textContent = 'Home');
+
+document.querySelectorAll('nav a').forEach(el => el.style.color = "red");
